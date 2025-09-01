@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Film Review - Review.io</title>
+  <link rel="stylesheet" href="./stylesheets/style.css" />
+</head>
+<body>
+
+  <h2>🎥 Review.io</h2>
+  
+  <form onsubmit="return API.login()">
+    <input type="text" id="login" placeholder="Enter Username" />
+    <button type="submit">Login</button>
+  </form>
+
+  <div class="main-content">
+    <input type="text" id="filmTitle" placeholder="Enter Film Title" />
+    
+    <div class="rating-input">
+      <label for="filmRating">Rating (1-5 stars):</label>
+      <select id="filmRating">
+        <option value="">Select Rating</option>
+        <option value="1">1 Star ★</option>
+        <option value="2">2 Stars ★★</option>
+        <option value="3">3 Stars ★★★</option>
+        <option value="4">4 Stars ★★★★</option>
+        <option value="5">5 Stars ★★★★★</option>
+      </select>
+    </div>
+    
+    <div class="button-container">
+      <button onclick="return API.createFilm()">Add Film</button>
+      <button onclick="return API.getFilms()">Show Films</button>
+    </div>
+  </div>
+  
+  <div id="errorMessage" class="error-message" style="display: none;"></div>
+  
+  <table id="filmTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>Film Title</th>
+        <th>Rating [Stars]</th>
+      </tr>
+    </thead>
+    <tbody id="filmList"></tbody>
+  </table>
+  
+  <script src="./javascripts/films.js"></script>
+</body>
+</html>

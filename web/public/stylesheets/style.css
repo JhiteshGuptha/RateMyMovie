@@ -1,0 +1,375 @@
+/* Enhanced and properly aligned styling for Film Review website */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Main container for all content */
+h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+/* Login form container */
+form {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Main content container for film inputs */
+.main-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Style the film title input */
+#filmTitle {
+  padding: 1rem;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+#filmTitle:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+#filmTitle::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* Login input styling */
+#login {
+  padding: 1rem;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+#login:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#login::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* Rating input container */
+.rating-input {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rating-input label {
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+#filmRating {
+  padding: 1rem;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#filmRating:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#filmRating option {
+  padding: 0.5rem;
+  font-weight: 500;
+}
+
+/* Button container */
+.button-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Button styling */
+button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.025em;
+  position: relative;
+  overflow: hidden;
+  min-width: 140px;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Error message styling */
+#errorMessage {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  color: #dc2626;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(220, 38, 38, 0.2);
+  animation: slideIn 0.3s ease;
+  text-align: center;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Success message styling */
+.success-message {
+  color: #22c55e;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #22c55e;
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  border-radius: 12px;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.2);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Table styling */
+#filmTable {
+  margin: 2rem 0;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#filmTable th,
+#filmTable td {
+  border: none;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+#filmTable th {
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+#filmTable td {
+  border-bottom: 1px solid #e2e8f0;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+#filmTable tbody tr:hover td {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+#filmTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+#filmTable td.rating {
+  color: #f59e0b;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  form,
+  .main-content {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+  
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  button {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  #filmTable {
+    font-size: 0.9rem;
+  }
+  
+  #filmTable th,
+  #filmTable td {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  form,
+  .main-content {
+    padding: 1rem;
+  }
+  
+  #filmTitle,
+  #login,
+  #filmRating {
+    max-width: 100%;
+  }
+}
+
+/* Subtle entrance animations */
+form,
+.main-content,
+#filmTable,
+#errorMessage {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
