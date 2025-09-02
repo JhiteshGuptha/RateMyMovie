@@ -301,7 +301,7 @@ button:active {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* NEW: Modal styling */
+/* Modal styling */
 .modal {
   position: fixed;
   z-index: 100;
@@ -356,6 +356,20 @@ button:active {
   border: 1px solid #ddd;
 }
 
+/* Styling for the new edit button in the table */
+.edit-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  min-width: auto;
+  background: linear-gradient(135deg, #8998e8, #866ab8);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
+
+.edit-button:hover {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
 
 /* Responsive design */
 @media (max-width: 768px) {

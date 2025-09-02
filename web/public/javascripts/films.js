@@ -1,7 +1,7 @@
 var API = (() => {
   
   var jwtToken;
-  var editingFilmId = null; // Variable to store the ID of the film being edited
+  var editingFilmId = null; 
 
   var displayErrorMessage = (message) => {
     const errorDiv = document.getElementById("errorMessage");
@@ -98,10 +98,10 @@ var API = (() => {
           row.innerHTML = `
             <td>${data.name}</td>
             <td class="rating">${stars}</td>
+            <td>
+              <button class="edit-button" onclick="API.openEditModal('${data._id}', '${data.name}', ${data.rating})">Edit</button>
+            </td>
           `;
-          // MODIFIED: Add click event to open the edit modal
-          row.style.cursor = "pointer";
-          row.onclick = () => API.openEditModal(data._id, data.name, data.rating);
           tbody.appendChild(row);
         });
       }
@@ -139,7 +139,6 @@ var API = (() => {
     return false;
   };
 
-  // NEW: Functions to manage the edit modal
   var openEditModal = (filmId, filmName, currentRating) => {
     editingFilmId = filmId;
     document.getElementById("modalFilmTitle").textContent = filmName;
@@ -172,7 +171,7 @@ var API = (() => {
       if (response.ok) {
         alert("Rating updated successfully!");
         closeEditModal();
-        getFilms(); // Refresh the film list
+        getFilms(); 
       } else {
         const errorData = await response.json();
         displayErrorMessage(errorData.error || `Error updating rating: ${response.status}`);
@@ -182,7 +181,6 @@ var API = (() => {
     }
   };
 
-  // MODIFIED: Expose the new functions
   return {
     createFilm,
     getFilms,
