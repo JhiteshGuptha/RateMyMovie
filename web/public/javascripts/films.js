@@ -48,7 +48,7 @@ var API = (() => {
     }
 
     try {
-      const response = await fetch('http://localhost:8080/api/v1/films', {
+      const response = await fetch('http://10.0.0.33:8080/api/v1/films', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ var API = (() => {
     tbody.innerHTML = "";
 
     try {
-      const response = await fetch('http://localhost:8080/api/v1/films');
+      const response = await fetch('http://10.0.0.33:8080/api/v1/films');
       const results = await response.json();
 
       if (results.length === 0) {
@@ -115,7 +115,7 @@ var API = (() => {
         return false;
     }
     try {
-        fetch("http://localhost:8080/api/v1/login", {
+        fetch("http://10.0.0.33:8080/api/v1/login", {
             method: 'POST',
             body: JSON.stringify({
                 username: val
