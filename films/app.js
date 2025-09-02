@@ -38,18 +38,51 @@ app.post('/api/v1/films', verifyToken, async(req, res) => {
             return res.status(400).json({ error: 'Rating must be between 1 and 5' });
         }
 
-        const film = new Film({ 
-            name: name.trim(), 
-            rating: ratingNum 
+        const film = new Film({
+            name: name.trim(),
+            rating: ratingNum
         });
-        
+
         const savedFilm = await film.save();
         res.status(201).json(savedFilm);
-        
+
     } catch (error) {
         res.status(500).json({ error: 'Failed to create film' });
     }
 });
+
+// NEW: Endpoint to update a film's rating
+app.put('/api/v1/films/:id', verifyToken, async(req, res) => {
+    try {
+        const { rating } = req.body;
+        const filmId = req.params.id;
+
+        if (rating === undefined || rating === null || rating === '') {
+            return res.status(400).json({ error: 'Rating is required' });
+        }
+
+        const ratingNum = parseInt(rating);
+        if (isNaN(ratingNum) || ratingNum < 1 || ratingNum > 5) {
+            return res.status(400).json({ error: 'Rating must be between 1 and 5' });
+        }
+
+        const updatedFilm = await Film.findByIdAndUpdate(
+            filmId,
+            { rating: ratingNum },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedFilm) {
+            return res.status(404).json({ error: 'Film not found' });
+        }
+
+        res.json(updatedFilm);
+
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to update film' });
+    }
+});
+
 
 app.post("/api/v1/login", (req, res) => {
     const user = {

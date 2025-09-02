@@ -1,6 +1,7 @@
 var API = (() => {
   
   var jwtToken;
+  var editingFilmId = null; // Variable to store the ID of the film being edited
 
   var displayErrorMessage = (message) => {
     const errorDiv = document.getElementById("errorMessage");
@@ -98,6 +99,9 @@ var API = (() => {
             <td>${data.name}</td>
             <td class="rating">${stars}</td>
           `;
+          // MODIFIED: Add click event to open the edit modal
+          row.style.cursor = "pointer";
+          row.onclick = () => API.openEditModal(data._id, data.name, data.rating);
           tbody.appendChild(row);
         });
       }
@@ -135,9 +139,56 @@ var API = (() => {
     return false;
   };
 
+  // NEW: Functions to manage the edit modal
+  var openEditModal = (filmId, filmName, currentRating) => {
+    editingFilmId = filmId;
+    document.getElementById("modalFilmTitle").textContent = filmName;
+    document.getElementById("modalFilmRating").value = currentRating;
+    document.getElementById("editModal").style.display = "flex";
+  };
+
+  var closeEditModal = () => {
+    editingFilmId = null;
+    document.getElementById("editModal").style.display = "none";
+  };
+  
+  var updateFilmRating = async () => {
+    if (!editingFilmId) return;
+
+    const newRating = document.getElementById("modalFilmRating").value;
+
+    try {
+      const response = await fetch(`http://10.0.0.33:8080/api/v1/films/${editingFilmId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + jwtToken
+        },
+        body: JSON.stringify({
+          rating: parseInt(newRating)
+        })
+      });
+
+      if (response.ok) {
+        alert("Rating updated successfully!");
+        closeEditModal();
+        getFilms(); // Refresh the film list
+      } else {
+        const errorData = await response.json();
+        displayErrorMessage(errorData.error || `Error updating rating: ${response.status}`);
+      }
+    } catch (error) {
+      displayErrorMessage("Please log in to update a rating.");
+    }
+  };
+
+  // MODIFIED: Expose the new functions
   return {
     createFilm,
     getFilms,
-    login
+    login,
+    openEditModal,
+    closeEditModal,
+    updateFilmRating
   };
 })();

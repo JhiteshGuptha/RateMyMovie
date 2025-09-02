@@ -47,6 +47,21 @@
     </thead>
     <tbody id="filmList"></tbody>
   </table>
+
+  <div id="editModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close-button" onclick="API.closeEditModal()">&times;</span>
+      <h3>Edit Rating for <span id="modalFilmTitle"></span></h3>
+      <select id="modalFilmRating">
+        <option value="1">1 Star ★</option>
+        <option value="2">2 Stars ★★</option>
+        <option value="3">3 Stars ★★★</option>
+        <option value="4">4 Stars ★★★★</option>
+        <option value="5">5 Stars ★★★★★</option>
+      </select>
+      <button onclick="API.updateFilmRating()">Save Changes</button>
+    </div>
+  </div>
   
   <script src="./javascripts/films.js"></script>
 </body>
